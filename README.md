@@ -4,6 +4,9 @@ This app adds support for Aeotec devices in Homey.
 
 ### Changelog:
 
+**2.0.20**
+* Added Nano Switch ZW140
+
 **2.0.18**
 * Fixes for the RGB bulb, re-added the rainbow mode Flow as well
 
