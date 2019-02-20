@@ -3,6 +3,8 @@
 This app adds support for Aeotec devices in Homey.
 
 ### Changelog:
+**2.0.22**
+* Fixes for Garage Door Controller Gen5
 
 **2.0.21**
 * Fixes Door/Window Sensor Gen5
