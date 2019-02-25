@@ -18,8 +18,15 @@ class AeotecGarageControllerDevice extends ZwaveDevice {
             },
 			set: 'BARRIER_OPERATOR_SET',
 			setParser: (input) => {
-			    if (this.getSetting('flipped') === true) input = !input;
-                return {'Target Value': (input) ? 'CLOSE' : 'OPEN'};
+			    if (this.getSetting('flipped')) {
+			        input = !input;
+                }
+
+			    let result = {
+                    'Target Value': (input) ? 'CLOSE' : 'OPEN'
+                };
+
+                return result;
 			},
 		});
 	}

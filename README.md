@@ -3,6 +3,12 @@
 This app adds support for Aeotec devices in Homey.
 
 ### Changelog:
+**2.0.24**
+* Fixes motion alarm on the DSB05 Multisensor 4-in-1
+
+**2.0.23**
+* Fixes device icons not showing
+
 **2.0.22**
 * Fixes for Garage Door Controller Gen5
 
