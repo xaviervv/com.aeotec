@@ -6,7 +6,10 @@ class AeotecFourInOneDevice extends ZwaveDevice {
 
 	onMeshInit() {
 		this.registerCapability('measure_battery', 'BATTERY');
-		this.registerCapability('alarm_motion', 'SENSOR_BINARY');
+		this.registerCapability('alarm_motion', 'BASIC', {
+		    reportParser: report => report['Value'] === 255
+            reportParserOverride: true
+        });
 
 		this.registerCapability('measure_temperature', 'SENSOR_MULTILEVEL');
         this.registerCapability('measure_luminance', 'SENSOR_MULTILEVEL');
