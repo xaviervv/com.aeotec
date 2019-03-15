@@ -3,6 +3,9 @@
 This app adds support for Aeotec devices in Homey.
 
 ### Changelog:
+**2.0.29**
+* Small fixes
+
 **2.0.27 - 2.0.28**
 * Enhancements to Home Energy Meter
 * Enhancements to door/window sensors
