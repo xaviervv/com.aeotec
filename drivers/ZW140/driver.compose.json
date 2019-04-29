@@ -3,7 +3,7 @@
   "name": {
     "en": "Dual Nano Switch (ZW140)"
   },
-  "class": "light",
+  "class": "socket",
   "capabilities": [
     "onoff"
   ],
