@@ -3,7 +3,7 @@
   "name": {
     "en": "Aeotec"
   },
-  "version": "2.0.30",
+  "version": "2.0.31",
   "compatibility": ">=1.5.0",
   "sdk": 2,
   "brandColor": "#00A2DA",
@@ -4064,6 +4064,7 @@
           3
         ],
         "productId": [
+          20,
           99
         ],
         "zwaveAllianceProductId": 1519,
@@ -5700,6 +5701,7 @@
           2
         ],
         "productId": [
+          42,
           120
         ],
         "zwaveAllianceProductId": 1579,
