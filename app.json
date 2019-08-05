@@ -7937,9 +7937,10 @@
         "zwaveAllianceProductId": 2286,
         "zwaveAllianceProductDocumentation": "https://Products.Z-WaveAlliance.org/ProductManual/File?folder=&filename=Manuals/2286/Oomi Dual In-Wall Switch manual.pdf",
         "learnmode": {
+          "image": "/drivers/ZWA008/assets/learnmode.svg",
           "instruction": {
-            "en": "Press the action button on the back of the Door/Window Sensor 7 (ZWA008).",
-            "nl": "Druk op de actie knop op de achterkant van de Door/Window Sensor 7 (ZWA008)."
+            "en": "Remove the cover of Door/Window Sensor 7 (ZWA008), then press the black button three times.",
+            "nl": "Verwijder de deksel van Door/Window Sensor 7 (ZWA008), druk daarna drie keer op het zwarte knopje."
           }
         },
         "associationGroups": [

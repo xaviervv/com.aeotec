@@ -24,9 +24,10 @@
     "zwaveAllianceProductId": 2286,
     "zwaveAllianceProductDocumentation": "https://Products.Z-WaveAlliance.org/ProductManual/File?folder=&filename=Manuals/2286/Oomi Dual In-Wall Switch manual.pdf",
     "learnmode": {
+      "image": "{{driverAssetsPath}}/learnmode.svg",
       "instruction": {
-        "en": "Press the action button on the back of the {{driverNameEn}}.",
-        "nl": "Druk op de actie knop op de achterkant van de {{driverNameNl}}."
+        "en": "Remove the cover of {{driverNameEn}}, then press the black button three times.",
+        "nl": "Verwijder de deksel van {{driverNameNl}}, druk daarna drie keer op het zwarte knopje."
       }
     },
     "associationGroups": [

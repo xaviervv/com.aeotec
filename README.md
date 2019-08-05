@@ -4,7 +4,9 @@ This app adds support for Aeotec devices in Homey.
 
 ### Changelog:
 **2.0.33/34**
-Fix power measurement for Nano devices and Heavy Duty Smart Switch.
+* Added Door/Window Sensor 7
+* Fix power measurement for Nano devices and Heavy Duty Smart Switch.
+* Nano devices now changes their status corresponding to the physical buttons.
 
 **2.0.30 - 2.0.32**
 Added Z-Wave ID's.
