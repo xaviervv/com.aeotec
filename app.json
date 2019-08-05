@@ -3,7 +3,7 @@
   "name": {
     "en": "Aeotec"
   },
-  "version": "2.0.33",
+  "version": "2.0.34",
   "compatibility": ">=1.5.0",
   "sdk": 2,
   "brandColor": "#00A2DA",
@@ -2509,6 +2509,11 @@
             "id": 101,
             "size": 4,
             "value": 12
+          },
+          {
+            "id": 111,
+            "size": 4,
+            "value": 30
           }
         ]
       },

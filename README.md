@@ -3,6 +3,12 @@
 This app adds support for Aeotec devices in Homey.
 
 ### Changelog:
+**2.0.33/34**
+Fix power measurement for Nano devices and Heavy Duty Smart Switch.
+
+**2.0.30 - 2.0.32**
+Added Z-Wave ID's.
+
 **2.0.29**
 * Small fixes
 
