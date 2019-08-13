@@ -3,8 +3,8 @@
     "name": {
       "en": "Aeotec"
     },
-    "version": "2.0.34",
-    "compatibility": ">=1.5.0",
+    "version": "2.0.35",
+    "compatibility": ">=2.4.0",
     "sdk": 2,
     "brandColor": "#00A2DA",
     "category": [

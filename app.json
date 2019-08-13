@@ -3,8 +3,8 @@
   "name": {
     "en": "Aeotec"
   },
-  "version": "2.0.34",
-  "compatibility": ">=1.5.0",
+  "version": "2.0.35",
+  "compatibility": ">=2.4.0",
   "sdk": 2,
   "brandColor": "#00A2DA",
   "category": [
@@ -4066,7 +4066,8 @@
       "zwave": {
         "manufacturerId": 134,
         "productTypeId": [
-          3
+          3,
+          515
         ],
         "productId": [
           20,
@@ -5708,8 +5709,7 @@
           2
         ],
         "productId": [
-          42,
-          120
+          42
         ],
         "zwaveAllianceProductId": 1579,
         "zwaveAllianceProductDocumentation": "https://Products.Z-WaveAlliance.org/ProductManual/File?folder=&filename=Manuals/1579/Door Window Sensor Gen5 manual.pdf",

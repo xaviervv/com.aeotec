@@ -3,6 +3,10 @@
 This app adds support for Aeotec devices in Homey.
 
 ### Changelog:
+
+**2.0.35**
+Corrected ZWave ID's for Door/Window Sensor 5 and Smart Dimmer 6.
+
 **2.0.33/34**
 * Added Door/Window Sensor 7
 * Fix power measurement for Nano devices and Heavy Duty Smart Switch.
