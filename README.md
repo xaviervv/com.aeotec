@@ -51,14 +51,13 @@ This app adds support for Aeotec devices in Homey.
 - Fixed Flows for the Wallmote Quad
 - Fixed on/off status for the Heavy Duty Switch
 
-### v--2.0.15
+### v2.0.15
 - Fixed an issue with App store compatibility
 
 ### v2.0.1 - 2.0.14
 - Bug fixes
 
 ### v2.0.0
-- WARNING: Preview release, this might be unstable
 - App now fully implemented in SDK2
 - Added the following devices:
   - Water sensor 6
@@ -81,14 +80,14 @@ This app adds support for Aeotec devices in Homey.
 - Added support for ZW116 - Nano Switch
 - Add support for ZW095 - Home Energy Clamp
 
---1.6.1--
+### v1.6.1
 - Fixed support for ZW139
 - Added support for ZW116 as a separate device
 
 ### v1.6.0
-- add support for DSA32 - Panic Button
-- add support for ZW111 - Nano Dimmer
-- add support for ZW139 - Nano Switch
+- Add support for DSA32 - Panic Button
+- Add support for ZW111 - Nano Dimmer
+- Add support for ZW139 - Nano Switch
 
 ### v1.5.2
 - ZW100 - MultiSensor 6 update:
@@ -98,21 +97,21 @@ This app adds support for Aeotec devices in Homey.
 - Update Z-Wave driver to v1.1.8
 
 ### v1.5.1
-- fix minor bugs for ZW075 - Smart Switch and ZW089 - Recessed Door Sensor
+- Fix minor bugs for ZW075 - Smart Switch and ZW089 - Recessed Door Sensor
 
 ### v1.5.0
-- add sound selection Flow card for ZW080 - Siren Gen5
+- Add sound selection Flow card for ZW080 - Siren Gen5
 
 ### v1.4.1
-- fix ZW130 - Wallmote Quad, multiple devices were not checked properly with triggers
+- Fix ZW130 - Wallmote Quad, multiple devices were not checked properly with triggers
 
 ### v1.4.0
-- add support for ZW130 - Wallmote Quad
+- Add support for ZW130 - Wallmote Quad
 
 ### v1.3.0
-- add support for ZW112 - Door/Window Sensor 6
-- add support for ZW117 - Range Extender 6
-- add Power Meter report (%) parameters
+- Add support for ZW112 - Door/Window Sensor 6
+- Add support for ZW117 - Range Extender 6
+- Add Power Meter report (%) parameters
   - ZW075
   - ZW096
   - ZW099
@@ -121,7 +120,7 @@ This app adds support for Aeotec devices in Homey.
 - Coding Clean-up
 - More Default Configuration fixes
 - Calibrations ZW100 now user friendly
-- add Power Meter capability: (Re-Pair needed)
+- Add Power Meter capability: (Re-Pair needed)
   - ZW075
   - ZW096
   - ZW099
@@ -130,7 +129,7 @@ This app adds support for Aeotec devices in Homey.
 - Fix default configuration (all drivers)
 - Add Keyfob mobile card (for battery)
 
-## 1.1.0
+### v1.1.0
 Add Support:
 - ZW088 - Keyfob
 - ZW098 - LED Bulb (RGBW Functionality)
