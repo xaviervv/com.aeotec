@@ -17,11 +17,9 @@
   "zwave": {
     "manufacturerId": 134,
     "productTypeId": [
-      2,
-      514
+      2
     ],
     "productId": [
-      120,
       122
     ],
     "zwaveAllianceProductId": 1579,
