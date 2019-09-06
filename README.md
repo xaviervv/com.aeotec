@@ -4,6 +4,9 @@ This app adds support for Aeotec devices in Homey.
 
 ## Changelog:
 
+### v2.0.37
+- Fixed Smart Switch/Dimmer 6 reporting when physical button is used to operate the device.
+
 ### v2.0.36
 - Corrected Australian device IDs.
 - Fixed tamper alarm for Water Sensor 6.

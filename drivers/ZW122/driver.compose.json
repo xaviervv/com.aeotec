@@ -14,6 +14,9 @@
     "large": "{{driverAssetsPath}}/images/large.png",
     "small": "{{driverAssetsPath}}/images/small.png"
   },
+  "energy": {
+    "batteries": [ "CR123A" ]
+  },
   "zwave": {
     "manufacturerId": 134,
     "productTypeId": [

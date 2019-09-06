@@ -3,7 +3,7 @@
   "name": {
     "en": "Aeotec"
   },
-  "version": "2.0.36",
+  "version": "2.0.37",
   "compatibility": ">=2.4.0",
   "sdk": 2,
   "brandColor": "#00A2DA",
@@ -692,6 +692,11 @@
         "large": "/drivers/DSA38/assets/images/large.png",
         "small": "/drivers/DSA38/assets/images/small.png"
       },
+      "energy": {
+        "batteries": [
+          "CR2450"
+        ]
+      },
       "zwave": {
         "manufacturerId": 134,
         "productTypeId": [
@@ -735,6 +740,14 @@
       "images": {
         "large": "/drivers/DSB05/assets/images/large.jpg",
         "small": "/drivers/DSB05/assets/images/small.jpg"
+      },
+      "energy": {
+        "batteries": [
+          "AAA",
+          "AAA",
+          "AAA",
+          "AAA"
+        ]
       },
       "zwave": {
         "manufacturerId": 134,
@@ -1047,6 +1060,12 @@
       "images": {
         "large": "/drivers/DSB45/assets/images/large.png",
         "small": "/drivers/DSB45/assets/images/small.png"
+      },
+      "energy": {
+        "batteries": [
+          "AAA",
+          "AAA"
+        ]
       },
       "zwave": {
         "manufacturerId": 134,
@@ -1616,6 +1635,14 @@
       "images": {
         "large": "/drivers/ZW074/assets/images/large.jpg",
         "small": "/drivers/ZW074/assets/images/small.jpg"
+      },
+      "energy": {
+        "batteries": [
+          "AAA",
+          "AAA",
+          "AAA",
+          "AAA"
+        ]
       },
       "zwave": {
         "manufacturerId": 134,
@@ -2899,6 +2926,11 @@
         "large": "/drivers/ZW088/assets/images/large.png",
         "small": "/drivers/ZW088/assets/images/small.png"
       },
+      "energy": {
+        "batteries": [
+          "CR2450"
+        ]
+      },
       "zwave": {
         "manufacturerId": 134,
         "productTypeId": [
@@ -2977,6 +3009,11 @@
       "images": {
         "large": "/drivers/ZW089/assets/images/large.png",
         "small": "/drivers/ZW089/assets/images/small.png"
+      },
+      "energy": {
+        "batteries": [
+          "CR2"
+        ]
       },
       "zwave": {
         "manufacturerId": 134,
@@ -3489,7 +3526,7 @@
         "associationGroupsOptions": {
           "1": {
             "hint": {
-              "en": "Z-Wave Plus Lifeline.\r\nThe Hial CC and Basic Report CC (configured by parameter 80) can be sent to the associatd nodes in this group."
+              "en": "Z-Wave Plus Lifeline.\r\nThe Hail CC and Basic Report CC (configured by parameter 80) can be sent to the associated nodes in this group."
             }
           }
         },
@@ -4508,6 +4545,12 @@
         "large": "/drivers/ZW100/assets/images/large.png",
         "small": "/drivers/ZW100/assets/images/small.png"
       },
+      "energy": {
+        "batteries": [
+          "CR123A",
+          "CR123A"
+        ]
+      },
       "zwave": {
         "manufacturerId": 134,
         "productTypeId": [
@@ -5258,6 +5301,11 @@
         "large": "/drivers/ZW112/assets/images/large.png",
         "small": "/drivers/ZW112/assets/images/small.png"
       },
+      "energy": {
+        "batteries": [
+          "INTERNAL"
+        ]
+      },
       "zwave": {
         "manufacturerId": 134,
         "productTypeId": [
@@ -5702,6 +5750,12 @@
       "images": {
         "large": "/drivers/ZW120/assets/images/large.png",
         "small": "/drivers/ZW120/assets/images/small.png"
+      },
+      "energy": {
+        "batteries": [
+          "AAA",
+          "AAA"
+        ]
       },
       "zwave": {
         "manufacturerId": 134,
@@ -6214,6 +6268,11 @@
         "large": "/drivers/ZW122/assets/images/large.png",
         "small": "/drivers/ZW122/assets/images/small.png"
       },
+      "energy": {
+        "batteries": [
+          "CR123A"
+        ]
+      },
       "zwave": {
         "manufacturerId": 134,
         "productTypeId": [
@@ -6412,6 +6471,11 @@
       "images": {
         "large": "/drivers/ZW129/assets/images/large.png",
         "small": "/drivers/ZW129/assets/images/small.png"
+      },
+      "energy": {
+        "batteries": [
+          "INTERNAL"
+        ]
       },
       "zwave": {
         "manufacturerId": 134,
@@ -6746,6 +6810,11 @@
       "images": {
         "large": "/drivers/ZW130/assets/images/large.png",
         "small": "/drivers/ZW130/assets/images/small.png"
+      },
+      "energy": {
+        "batteries": [
+          "INTERNAL"
+        ]
       },
       "zwave": {
         "manufacturerId": 134,
@@ -7925,6 +7994,11 @@
       "images": {
         "large": "/drivers/ZWA008/assets/images/large.png",
         "small": "/drivers/ZWA008/assets/images/small.png"
+      },
+      "energy": {
+        "batteries": [
+          "LS14250"
+        ]
       },
       "zwave": {
         "manufacturerId": 881,
