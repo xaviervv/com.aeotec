@@ -3,6 +3,9 @@
 This app adds support for Aeotec devices in Homey.
 
 ## Changelog:
+### 2.0.38
+- Added battery types for battery operated devices.
+- Updated meshdriver.
 
 ### v2.0.37
 - Fixed Smart Switch/Dimmer 6 reporting when physical button is used to operate the device.

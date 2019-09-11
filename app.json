@@ -3,7 +3,7 @@
   "name": {
     "en": "Aeotec"
   },
-  "version": "2.0.37",
+  "version": "2.0.38",
   "compatibility": ">=2.4.0",
   "sdk": 2,
   "brandColor": "#00A2DA",
@@ -3998,8 +3998,8 @@
     {
       "id": "ZW098",
       "name": {
-        "en": "LED Bulb",
-        "nl": "LED lamp"
+        "en": "LED Bulb 5",
+        "nl": "LED lamp gen. 5"
       },
       "class": "light",
       "capabilities": [
@@ -4028,14 +4028,14 @@
         "learnmode": {
           "image": "/drivers/ZW098/assets/learnmode.svg",
           "instruction": {
-            "en": "Quickly turn the LED Bulb off and on again. For secure pairing quickly turn the LED Bulb off and on 5 times.",
-            "nl": "Schakel de LED lamp snel uit en aan. Voor beveiligd koppelen schakel de LED lamp 5 keer snel uit en aan."
+            "en": "Quickly turn the LED Bulb 5 off and on again. For secure pairing quickly turn the LED Bulb 5 off and on 5 times.",
+            "nl": "Schakel de LED lamp gen. 5 snel uit en aan. Voor beveiligd koppelen schakel de LED lamp gen. 5 5 keer snel uit en aan."
           }
         },
         "unlearnmode": {
           "instruction": {
-            "en": "Quickly turn the LED Bulb off and on again 5 times.",
-            "nl": "Schakel de LED lamp vijf maal snel uit en aan."
+            "en": "Quickly turn the LED Bulb 5 off and on again 5 times.",
+            "nl": "Schakel de LED lamp gen. 5 vijf maal snel uit en aan."
           }
         },
         "associationGroups": [
@@ -4050,8 +4050,8 @@
           },
           "2": {
             "hint": {
-              "en": "Forwarding group for all commands sent to the LED Bulb by the main controller.",
-              "nl": "Doorstuur groep voor alle commando's verstuurd naar de LED lamp door de main controller."
+              "en": "Forwarding group for all commands sent to the LED Bulb 5 by the main controller.",
+              "nl": "Doorstuur groep voor alle commando's verstuurd naar de LED lamp gen. 5 door de main controller."
             }
           }
         },
@@ -5301,11 +5301,6 @@
         "large": "/drivers/ZW112/assets/images/large.png",
         "small": "/drivers/ZW112/assets/images/small.png"
       },
-      "energy": {
-        "batteries": [
-          "INTERNAL"
-        ]
-      },
       "zwave": {
         "manufacturerId": 134,
         "productTypeId": [
@@ -6472,11 +6467,6 @@
         "large": "/drivers/ZW129/assets/images/large.png",
         "small": "/drivers/ZW129/assets/images/small.png"
       },
-      "energy": {
-        "batteries": [
-          "INTERNAL"
-        ]
-      },
       "zwave": {
         "manufacturerId": 134,
         "productTypeId": [
@@ -6810,11 +6800,6 @@
       "images": {
         "large": "/drivers/ZW130/assets/images/large.png",
         "small": "/drivers/ZW130/assets/images/small.png"
-      },
-      "energy": {
-        "batteries": [
-          "INTERNAL"
-        ]
       },
       "zwave": {
         "manufacturerId": 134,
