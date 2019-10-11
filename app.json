@@ -3,7 +3,7 @@
   "name": {
     "en": "Aeotec"
   },
-  "version": "2.0.38",
+  "version": "2.0.39",
   "compatibility": ">=2.4.0",
   "sdk": 2,
   "brandColor": "#00A2DA",
@@ -673,6 +673,96 @@
               }
             ],
             "value": "0"
+          }
+        ]
+      },
+      {
+        "id": "ZW168-turn_alarm_on",
+        "title": {
+          "en": "Turn siren on",
+          "nl": "Zet sirene aan"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=ZW164-C"
+          },
+          {
+            "name": "sound",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "1",
+                "label": {
+                  "en": "Doorbell",
+                  "nl": "Deurbel"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "Alarm Siren",
+                  "nl": "Alarm sirene"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "Ding dong",
+                  "nl": "Ding dong"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "Bell Telephone",
+                  "nl": "Klassieke telefoon"
+                }
+              },
+              {
+                "id": "5",
+                "label": {
+                  "en": "Big Ben",
+                  "nl": "Big Ben"
+                }
+              },
+              {
+                "id": "6",
+                "label": {
+                  "en": "Smoke Alarm",
+                  "nl": "Rook alarm"
+                }
+              },
+              {
+                "id": "7",
+                "label": {
+                  "en": "Nuclear Alarm",
+                  "nl": "Nuclear alarm"
+                }
+              },
+              {
+                "id": "8",
+                "label": {
+                  "en": "Ring Alarm",
+                  "nl": "Bel alarm"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ZW168-turn_alarm_off",
+        "title": {
+          "en": "Turn siren off",
+          "nl": "Zet sirene uit"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=ZW164-C"
           }
         ]
       }
@@ -7959,6 +8049,126 @@
               "label": {
                 "en": "Basic Set",
                 "nl": "Basic Set"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ZW164-C",
+      "name": {
+        "en": "Indoor Siren 6"
+      },
+      "class": "other",
+      "capabilities": [
+        "onoff.siren"
+      ],
+      "images": {
+        "large": "/drivers/ZW164-C/assets/images/large.jpg",
+        "small": "/drivers/ZW164-C/assets/images/small.jpg"
+      },
+      "zwave": {
+        "manufacturerId": 881,
+        "productTypeId": [
+          3
+        ],
+        "productId": [
+          164
+        ],
+        "zwaveAllianceProductId": 1141,
+        "zwaveAllianceProductDocumentation": "https://Products.Z-WaveAlliance.org/ProductManual/File?folder=&filename=Manuals/1141/Siren Gen5 Manual.pdf",
+        "learnmode": {
+          "instruction": {
+            "en": "Press the action button on the Indoor Siren 6",
+            "nl": "Druk op de actie knop op de Indoor Siren 6"
+          }
+        },
+        "unlearnmode": {
+          "instruction": {
+            "en": "Quickly press the action button on the Indoor Siren 6 6 times.",
+            "nl": "Druk 6 keer snel achter elkaar op de actie knop van de Indoor Siren 6."
+          }
+        },
+        "associationGroups": [
+          1
+        ],
+        "associationGroupsOptions": {
+          "1": {
+            "hint": {
+              "en": "Group 1 is assigned to the Lifeline association group and every device has 5 nodes to associate.\nWhen the Siren is received the commands sent by controller to be turned on or off, the Siren will send a basic report of its status to the nodes in association group 1. To change what kind of signal is sent to the nodes in group 1, please see the detailed description of configuration parameter 80.\n"
+            }
+          }
+        }
+      },
+      "settings": [
+        {
+          "id": "default_sound",
+          "type": "dropdown",
+          "label": {
+            "en": "Default sound",
+            "nl": "Standaard geluid"
+          },
+          "hint": {
+            "en": "This setting determines which sound should be played by default.",
+            "nl": "Deze instelling bepaalt welk geluid er standaard afgespeeld wordt."
+          },
+          "value": "1",
+          "values": [
+            {
+              "id": "1",
+              "label": {
+                "en": "Doorbell",
+                "nl": "Deurbel"
+              }
+            },
+            {
+              "id": "2",
+              "label": {
+                "en": "Alarm Siren",
+                "nl": "Alarm sirene"
+              }
+            },
+            {
+              "id": "3",
+              "label": {
+                "en": "Ding dong",
+                "nl": "Ding dong"
+              }
+            },
+            {
+              "id": "4",
+              "label": {
+                "en": "Bell Telephone",
+                "nl": "Klassieke telefoon"
+              }
+            },
+            {
+              "id": "5",
+              "label": {
+                "en": "Big Ben",
+                "nl": "Big Ben"
+              }
+            },
+            {
+              "id": "6",
+              "label": {
+                "en": "Smoke Alarm",
+                "nl": "Rook alarm"
+              }
+            },
+            {
+              "id": "7",
+              "label": {
+                "en": "Nuclear Alarm",
+                "nl": "Nuclear alarm"
+              }
+            },
+            {
+              "id": "8",
+              "label": {
+                "en": "Ring Alarm",
+                "nl": "Bel alarm"
               }
             }
           ]
