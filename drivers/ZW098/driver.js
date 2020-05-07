@@ -3,15 +3,17 @@
 const Homey = require('homey');
 
 class AeotecLEDBulb5Driver extends Homey.Driver {
-    onInit() {
-        super.onInit();
 
-        let rainbowAction = new Homey.FlowCardAction('zw098_rainbow')
-          .register()
-          .registerRunListener((args, state) => {
+  onInit() {
+    super.onInit();
+
+    const rainbowAction = new Homey.FlowCardAction('zw098_rainbow')
+      .register()
+      .registerRunListener((args, state) => {
           	return args.device.rainbowModeHandler(args);
     			});
-    }
+  }
+
 }
 
 module.exports = AeotecLEDBulb5Driver;
