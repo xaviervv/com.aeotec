@@ -6,8 +6,6 @@ class AeotecFourInOneDevice extends ZwaveDevice {
 
   onMeshInit() {
     this.registerReportListener('BASIC', 'BASIC_SET', report => {
-      this.log('ReportListener');
-      this.log(report);
       this.setCapabilityValue('alarm_motion', report['Value'] === 255);
     });
 

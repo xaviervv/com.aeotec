@@ -9,7 +9,7 @@ class AeotecSmartSwitchDevice extends ZwaveDevice {
     this.registerCapability('measure_power', 'METER');
     this.registerCapability('meter_power', 'METER');
 
-    this.registerSetting('80', input => new Buffer([(input) ? 2 : 0]));
+    this.registerSetting('80', input => Buffer.from([(input) ? 2 : 0]));
   }
 
 }
