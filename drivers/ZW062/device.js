@@ -9,17 +9,24 @@ class AeotecGarageControllerDevice extends ZwaveDevice {
 			get: 'BARRIER_OPERATOR_GET',
 			report: 'BARRIER_OPERATOR_REPORT',
 			reportParser: report => {
-			    if (this.getSetting('flipped') === true) {
-                    return report.State !== 'Closed';
+			    if (report && report.State) {
+			        let result = report.State === 'Closed';
+
+			        if (this.getSetting('flipped')) return !result;
+			        return result;
                 }
-                return report.State === 'Closed'
             },
 			set: 'BARRIER_OPERATOR_SET',
 			setParser: (input) => {
-			    if (this.getSetting('flipped') === true) {
-			        return {'Target Value': (input) ? 'CLOSE' : 'OPEN'};
+			    if (this.getSetting('flipped')) {
+			        input = !input;
                 }
-                return {'Target Value': (input) ? 'OPEN' : 'CLOSE'};
+
+			    let result = {
+                    'Target Value': (input) ? 'CLOSE' : 'OPEN'
+                };
+
+                return result;
 			},
 		});
 	}
