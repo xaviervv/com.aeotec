@@ -26,45 +26,52 @@ class AeotecLEDBulbDevice extends ZwaveDevice {
       } else if (values.light_mode === 'temperature') {
         if (this.currentTemp) temp = this.currentTemp;
         else {
-          this.getCapabilityValue('light_temperature') < 0.5 ? temp.cw = this._map(0, 0.5, 255, 10, this.getCapabilityValue('light_temperature')) : temp.cw = 0;
-          this.getCapabilityValue('light_temperature') >= 0.5 ? temp.ww = this._map(0.5, 1, 10, 255, this.getCapabilityValue('light_temperature')) : temp.ww = 0;
+          temp.cw = this.getCapabilityValue('light_temperature') < 0.5 ? this._map(0, 0.5, 255, 10, this.getCapabilityValue('light_temperature')) : 0;
+          temp.ww = this.getCapabilityValue('light_temperature') >= 0.5 ? this._map(0.5, 1, 10, 255, this.getCapabilityValue('light_temperature')) : 0;
           this.currentTemp = temp;
         }
       } else if (typeof values.light_hue === 'number' || typeof values.light_saturation === 'number') {
-        let hue; let saturation; let
-          dim;
-        typeof values.light_hue === 'number' ? hue = values.light_hue : hue = this.getCapabilityValue('light_hue');
-        typeof values.light_saturation === 'number' ? saturation = values.light_saturation : saturation = this.getCapabilityValue('light_saturation');
-        dim = this.getCapabilityValue('dim');
+        const hue = typeof values.light_hue === 'number' ? values.light_hue : this.getCapabilityValue('light_hue');
+        const saturation = typeof values.light_saturation === 'number' ? values.light_saturation : this.getCapabilityValue('light_saturation');
+        const dim = this.getCapabilityValue('dim');
 
         rgb = zwaveUtils.convertHSVToRGB({ hue, saturation, value: dim });
         this.currentRGB = rgb;
       } else if (typeof values.light_temperature === 'number') {
-        values.light_temperature < 0.5 ? temp.cw = this._map(0, 0.5, 255, 10, values.light_temperature) : temp.cw = 0;
-        values.light_temperature >= 0.5 ? temp.ww = this._map(0.5, 1, 10, 255, values.light_temperature) : temp.ww = 0;
+        if (values.light_temperature < 0.5) {
+          temp.cw = this._map(0, 0.5, 255, 10, values.light_temperature);
+        } else {
+          temp.cw = 0;
+        }
+
+        if (values.light_temperature >= 0.5) {
+          temp.ww = this._map(0.5, 1, 10, 255, values.light_temperature);
+        } else {
+          temp.ww = 0;
+        }
         this.currentTemp = temp;
       }
 
       // Send values
-      return await this._sendColors({
+      return this._sendColors({
         red: rgb.red, green: rgb.green, blue: rgb.blue, warm: temp.ww, cold: temp.cw,
       });
     });
 
-    this.registerSetting('80', input => new Buffer([(input) ? 2 : 0]));
-    this.registerSetting('34', input => new Buffer([(input) ? 1 : 0]));
-    this.registerSetting('35', input => new Buffer([(input) ? 1 : 0]));
+    this.registerSetting('80', input => Buffer.from([(input) ? 2 : 0]));
+    this.registerSetting('34', input => Buffer.from([(input) ? 1 : 0]));
+    this.registerSetting('35', input => Buffer.from([(input) ? 1 : 0]));
   }
 
   async rainbowModeHandler(args) {
-    console.log(args);
+    this.log(args);
 
     if (args && typeof args.speed === 'number' && typeof args.fadeType === 'string' && typeof args.cycles === 'number') {
       // Map speed 100 - 0 to 0 - 254
       args.speed = Math.round(this._map(100, 0, 0, 254, args.speed));
 
       // Get fadeType as integer
-      args.fadeType = parseInt(args.fadeType);
+      args.fadeType = Number(args.fadeType);
 
       // Round cycles
       args.cycles = Math.round(args.cycles);
@@ -87,14 +94,22 @@ class AeotecLEDBulbDevice extends ZwaveDevice {
         });
 
         return Promise.resolve(true);
-      } catch (e) {
+      } catch (err) {
         return Promise.resolve(false);
       }
-    } else return Promise.reject('invalid_device');
+    } else return Promise.reject(new Error('invalid_device'));
   }
 
-  _createColourCommand(colourDisplayCycle, colourTransitionStyle, cycleCount, colourChangeSpeed, colourResidenceTime) {
-    return new Buffer([this._getDecimalValueFromArrays(colourTransitionStyle, 2, colourDisplayCycle, 4, true), cycleCount, colourChangeSpeed, colourResidenceTime]);
+  _createColourCommand(colourDisplayCycle,
+    colourTransitionStyle,
+    cycleCount,
+    colourChangeSpeed,
+    colourResidenceTime) {
+    return Buffer.from([
+      this._getDecimalValueFromArrays(colourTransitionStyle, 2, colourDisplayCycle, 4, true),
+      cycleCount,
+      colourChangeSpeed,
+      colourResidenceTime]);
   }
 
   _getDecimalValueFromArrays(value1, size1, value2, size2, fillPos5And4) {
@@ -120,7 +135,7 @@ class AeotecLEDBulbDevice extends ZwaveDevice {
     const numbers = number.split('');
 
     numbers.forEach(x => {
-      x = parseInt(x);
+      x = parseInt(x, 2);
     });
 
     // Check if array has correct size
@@ -136,13 +151,14 @@ class AeotecLEDBulbDevice extends ZwaveDevice {
   }
 
   _map(inputStart, inputEnd, outputStart, outputEnd, input) {
-    return outputStart + ((outputEnd - outputStart) / (inputEnd - inputStart)) * (input - inputStart);
+    return (outputStart + ((outputEnd - outputStart)
+    / (inputEnd - inputStart)) * (input - inputStart));
   }
 
   async _sendColors({
     red, green, blue, warm, cold,
   }) {
-    return await this.node.CommandClass.COMMAND_CLASS_SWITCH_COLOR.SWITCH_COLOR_SET({
+    return this.node.CommandClass.COMMAND_CLASS_SWITCH_COLOR.SWITCH_COLOR_SET({
       Properties1: {
         'Color Component Count': 5,
       },

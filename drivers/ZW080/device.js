@@ -1,6 +1,5 @@
 'use strict';
 
-const Homey = require('homey');
 const { ZwaveDevice } = require('homey-meshdriver');
 
 class AeotecSirenDevice extends ZwaveDevice {
@@ -15,14 +14,13 @@ class AeotecSirenDevice extends ZwaveDevice {
   }
 
   async onOffRunListener(args, state, on) {
-    let value;
-    on ? value = 255 : value = 0;
+    const value = on ? 255 : 0;
 
     if (this.node && this.node.CommandClass.COMMAND_CLASS_SWITCH_BINARY) {
-      return await this.node.CommandClass.COMMAND_CLASS_SWITCH_BINARY.SWITCH_BINARY_SET({
+      return this.node.CommandClass.COMMAND_CLASS_SWITCH_BINARY.SWITCH_BINARY_SET({
         'Switch Value': value,
       });
-    } return Promise.reject('invalid_device_command_class');
+    } return Promise.reject(new Error('invalid_device_command_class'));
   }
 
   async changeSoundRunListener(args, state) {
@@ -30,8 +28,8 @@ class AeotecSirenDevice extends ZwaveDevice {
       zwaveValue;
 
     if (args && args.sound && args.volume) {
-      settingsValue = parseInt(args.sound) + parseInt(args.volume);
-      zwaveValue = new Buffer(2);
+      settingsValue = Number(args.sound) + Number(args.volume);
+      zwaveValue = Buffer.alloc(2);
       zwaveValue.writeUIntBE(settingsValue, 0, 2);
 
       try {
@@ -50,7 +48,10 @@ class AeotecSirenDevice extends ZwaveDevice {
       } catch (err) {
         return Promise.reject(err);
       }
+
+      return Promise.resolve(true);
     }
+    return Promise.reject(new Error('invalid_arguments'));
   }
 
 }

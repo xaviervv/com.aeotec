@@ -12,10 +12,10 @@ class AeotecFourinOneGenFiveDevice extends ZwaveDevice {
     this.registerCapability('measure_luminance', 'SENSOR_MULTILEVEL');
     this.registerCapability('measure_humidity', 'SENSOR_MULTILEVEL');
 
-    this.registerSetting('41', value => new Buffer([value, 0]));
-    this.registerSetting('42', value => new Buffer([value, 0]));
-    this.registerSetting('43', value => new Buffer([value, 0]));
-    this.registerSetting('44', value => new Buffer([value, 0]));
+    this.registerSetting('41', value => Buffer.from([value, 0]));
+    this.registerSetting('42', value => Buffer.from([value, 0]));
+    this.registerSetting('43', value => Buffer.from([value, 0]));
+    this.registerSetting('44', value => Buffer.from([value, 0]));
   }
 
 }

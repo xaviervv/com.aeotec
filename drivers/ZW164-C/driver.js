@@ -10,13 +10,13 @@ class AeotecSirenSixDeviceDriver extends Homey.Driver {
     this.alarmOnFlow = new Homey.FlowCardAction('ZW168-turn_alarm_on')
       .register()
       .registerRunListener(async (args, state) => {
-        if (!typeof (args.sound) === 'Number') return new Error('Sound should be a number');
-        return await args.device.setSiren({ sirenNumber: args.sound, sirenState: true });
+        if (typeof (args.sound) !== 'number') return new Error('Sound should be a number');
+        return args.device.setSiren({ sirenNumber: args.sound, sirenState: true });
       });
     this.alarmOffFlow = new Homey.FlowCardAction('ZW168-turn_alarm_off')
       .register()
       .registerRunListener(async (args, state) => {
-        return await args.device.resetSiren();
+        return args.device.resetSiren();
       });
   }
 
