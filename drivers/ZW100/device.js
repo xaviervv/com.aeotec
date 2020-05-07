@@ -18,8 +18,8 @@ class AeotecMultiSensorSixDevice extends ZwaveDevice {
           if (report['Event (Parsed)'] === 'Tampering, Product covering removed'
                         || report['Event (Parsed)'] === 'Tampering, Invalid Code'
                         || report['Event (Parsed)'] === 'Tampering, Product Moved') {
-                    	setTimeout(() => {
-                    		this.setCapabilityValue('alarm_tamper', false);
+            setTimeout(() => {
+              this.setCapabilityValue('alarm_tamper', false);
             }, this._cancellationTimeout * 1000);
             return true;
           }

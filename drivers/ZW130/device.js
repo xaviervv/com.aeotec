@@ -25,8 +25,8 @@ class ZW130 extends ZwaveDevice {
 
     this.registerReportListener('CENTRAL_SCENE', 'CENTRAL_SCENE_NOTIFICATION', report => {
       if (report.hasOwnProperty('Properties1')
-				&& report.Properties1.hasOwnProperty('Key Attributes')
-				&& report.hasOwnProperty('Scene Number')) {
+        && report.Properties1.hasOwnProperty('Key Attributes')
+        && report.hasOwnProperty('Scene Number')) {
         const data = {
           button: report['Scene Number'].toString(),
           scene: report.Properties1['Key Attributes'],
@@ -36,7 +36,7 @@ class ZW130 extends ZwaveDevice {
     });
     this.registerReportListener('CONFIGURATION', 'CONFIGURATION_REPORT', report => {
       if (report.hasOwnProperty('Parameter Number')
-				&& report.hasOwnProperty('Configuration Value')) {
+        && report.hasOwnProperty('Configuration Value')) {
         if (report['Parameter Number'] === 9) {
           const data = {
             button: report['Configuration Value'][0].toString(),
@@ -44,7 +44,7 @@ class ZW130 extends ZwaveDevice {
           };
           this._sceneTrigger.trigger(this, null, data);
         }
-                	if (report['Parameter Number'] === 10) {
+        if (report['Parameter Number'] === 10) {
           let value = Math.round(report['Configuration Value'][2] / 2) / 100;
           if (value < 0.5) value = Math.max(value - 0.05, 0);
           const token = {
@@ -63,16 +63,16 @@ class ZW130 extends ZwaveDevice {
     super.onSettings(oldSettings, newSettings, changedKeys);
 
     if (changedKeys.includes('rgb_name')
-			|| changedKeys.includes('rgb_r')
-			|| changedKeys.includes('rgb_g')
-			|| changedKeys.includes('rgb_b')) {
+      || changedKeys.includes('rgb_r')
+      || changedKeys.includes('rgb_g')
+      || changedKeys.includes('rgb_b')) {
       this.log('color changed');
 
       if (newSettings.rgb_name === 'custom'
                 && newSettings.hasOwnProperty('rgb_r')
                 && newSettings.hasOwnProperty('rgb_g')
                 && newSettings.hasOwnProperty('rgb_b')) {
-            	this.log('custom color');
+        this.log('custom color');
         return await this.configurationSet({
           index: 5,
           size: 4,
@@ -97,10 +97,10 @@ class ZW130 extends ZwaveDevice {
     if (!state) return Promise.reject('No state provided');
 
     if (args.hasOwnProperty('button')
-			&& state.hasOwnProperty('button')
-			&& args.hasOwnProperty('scene')
-			&& state.hasOwnProperty('scene')) {
-        		return (args.button === state.button && args.scene === state.scene);
+      && state.hasOwnProperty('button')
+      && args.hasOwnProperty('scene')
+      && state.hasOwnProperty('scene')) {
+      return (args.button === state.button && args.scene === state.scene);
     } return Promise.reject('Button or scene undefined in args or state');
   }
 
@@ -109,8 +109,8 @@ class ZW130 extends ZwaveDevice {
     if (!state) return Promise.reject('No state provided');
 
     if (args.hasOwnProperty('button')
-			&& state.hasOwnProperty('button')) {
-        		return (args.button === state.button);
+      && state.hasOwnProperty('button')) {
+      return (args.button === state.button);
     } return Promise.reject('Button undefined in args or state');
   }
 

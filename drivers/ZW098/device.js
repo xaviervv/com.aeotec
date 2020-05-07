@@ -10,7 +10,7 @@ class AeotecLEDBulbDevice extends ZwaveDevice {
     this.registerCapability('dim', 'SWITCH_MULTILEVEL');
 
     this.registerMultipleCapabilityListener(['light_hue', 'light_saturation', 'light_temperature', 'light_mode'], async (values, options) => {
-		    let rgb = { red: 0, green: 0, blue: 0 };
+      let rgb = { red: 0, green: 0, blue: 0 };
       let temp = { cw: 0, ww: 0 };
 
       if (values.light_mode === 'color') {
@@ -57,7 +57,7 @@ class AeotecLEDBulbDevice extends ZwaveDevice {
   }
 
   async rainbowModeHandler(args) {
-	    console.log(args);
+    console.log(args);
 
     if (args && typeof args.speed === 'number' && typeof args.fadeType === 'string' && typeof args.cycles === 'number') {
       // Map speed 100 - 0 to 0 - 254

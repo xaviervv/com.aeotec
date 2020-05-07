@@ -10,8 +10,8 @@ class AeotecLEDBulb5Driver extends Homey.Driver {
     const rainbowAction = new Homey.FlowCardAction('zw098_rainbow')
       .register()
       .registerRunListener((args, state) => {
-          	return args.device.rainbowModeHandler(args);
-    			});
+        return args.device.rainbowModeHandler(args);
+      });
   }
 
 }
