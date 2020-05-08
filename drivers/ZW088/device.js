@@ -1,6 +1,5 @@
 'use strict';
 
-const Homey = require('homey');
 const { ZwaveDevice } = require('homey-meshdriver');
 
 const sceneMap = {
@@ -32,7 +31,7 @@ class AeotecKeyFobDevice extends ZwaveDevice {
     });
 
     this.registerReportListener('SCENE_ACTIVATION', 'SCENE_ACTIVATION_SET', report => {
-      if (report && report['Scene ID']) {
+      if (typeof (report['Scene ID']) !== 'undefined') {
         const trigger = sceneMap[report['Scene ID']];
         this[trigger].trigger(this, null, null);
       }

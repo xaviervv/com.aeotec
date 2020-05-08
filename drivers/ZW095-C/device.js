@@ -16,11 +16,10 @@ class AeotecHomeEnergyDevice extends ZwaveDevice {
         },
       }),
       reportParserV4: report => {
-        if (report.hasOwnProperty('Properties2')
-                    && report.Properties2.hasOwnProperty('Scale bits 10')
-                    && report.Properties2['Scale bits 10'] === 2
-                    && report.Properties1.hasOwnProperty('Scale bit 2')
-                    && report.Properties1['Scale bit 2'] === false) {
+        if (report.Properties2
+            && report.Properties2['Scale bits 10'] === 2
+            && report.Properties1
+            && report.Properties1['Scale bit 2'] === false) {
           return report['Meter Value (Parsed)'];
         }
         return null;
@@ -35,11 +34,10 @@ class AeotecHomeEnergyDevice extends ZwaveDevice {
         },
       }),
       reportParserV4: report => {
-        if (report.hasOwnProperty('Properties2')
-                    && report.Properties2.hasOwnProperty('Scale bits 10')
-                    && report.Properties2['Scale bits 10'] === 0
-                    && report.Properties1.hasOwnProperty('Scale bit 2')
-                    && report.Properties1['Scale bit 2'] === false) {
+        if (report.Properties2
+            && report.Properties2['Scale bits 10'] === 0
+            && report.Properties1
+            && report.Properties1['Scale bit 2'] === false) {
           return report['Meter Value (Parsed)'];
         }
         return null;
@@ -54,11 +52,10 @@ class AeotecHomeEnergyDevice extends ZwaveDevice {
         },
       }),
       reportParserV4: report => {
-        if (report.hasOwnProperty('Properties2')
-                    && report.Properties2.hasOwnProperty('Scale bits 10')
-                    && report.Properties2['Scale bits 10'] === 0
-                    && report.Properties1.hasOwnProperty('Scale bit 2')
-                    && report.Properties1['Scale bit 2'] === true) {
+        if (report.Properties2
+            && report.Properties2['Scale bits 10'] === 0
+            && report.Properties1
+            && report.Properties1['Scale bit 2'] === true) {
           return report['Meter Value (Parsed)'];
         }
         return null;
@@ -73,11 +70,10 @@ class AeotecHomeEnergyDevice extends ZwaveDevice {
         },
       }),
       reportParserV4: report => {
-        if (report.hasOwnProperty('Properties2')
-                    && report.Properties2.hasOwnProperty('Scale bits 10')
-                    && report.Properties2['Scale bits 10'] === 1
-                    && report.Properties1.hasOwnProperty('Scale bit 2')
-                    && report.Properties1['Scale bit 2'] === true) {
+        if (report.Properties2
+            && report.Properties2['Scale bits 10'] === 1
+            && report.Properties1
+            && report.Properties1['Scale bit 2'] === true) {
           return report['Meter Value (Parsed)'];
         }
         return null;

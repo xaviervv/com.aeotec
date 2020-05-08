@@ -12,21 +12,22 @@ class AeotecMultiSensorSixDevice extends ZwaveDevice {
     this.registerCapability('alarm_motion', 'SENSOR_BINARY');
     this.registerCapability('alarm_tamper', 'NOTIFICATION', {
       reportParser: report => {
-        if ((report && report['Notification Type'] === 'Home Security'
-                    || report['Notification Type'] === 'Burglar')
-                    && report.hasOwnProperty('Event (Parsed)')) {
+        if (!report) return null;
+        if ((report['Notification Type'] === 'Home Security'
+              || report['Notification Type'] === 'Burglar')
+              && report['Event (Parsed)']) {
           if (report['Event (Parsed)'] === 'Tampering, Product covering removed'
-                        || report['Event (Parsed)'] === 'Tampering, Invalid Code'
-                        || report['Event (Parsed)'] === 'Tampering, Product Moved') {
+              || report['Event (Parsed)'] === 'Tampering, Invalid Code'
+              || report['Event (Parsed)'] === 'Tampering, Product Moved') {
             setTimeout(() => {
               this.setCapabilityValue('alarm_tamper', false);
             }, this._cancellationTimeout * 1000);
             return true;
           }
-          if (report['Event (Parsed)'] === 'Event inactive' && (!report.hasOwnProperty('Event Parameter')
-                        || report['Event Parameter'][0] === 3
-                        || report['Event Parameter'][0] === 4
-                        || report['Event Parameter'][0] === 9)) {
+          if (report['Event (Parsed)'] === 'Event inactive' && (!report['Event Parameter']
+              || report['Event Parameter'][0] === 3
+              || report['Event Parameter'][0] === 4
+              || report['Event Parameter'][0] === 9)) {
             return false;
           }
         }
@@ -40,7 +41,7 @@ class AeotecMultiSensorSixDevice extends ZwaveDevice {
     this.registerCapability('measure_ultraviolet', 'SENSOR_MULTILEVEL');
 
     this.registerSetting('201', value => {
-      return new Buffer([Math.round(value * 10), 1]);
+      return Buffer.from([Math.round(value * 10), 1]);
     });
   }
 

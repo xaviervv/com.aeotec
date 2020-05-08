@@ -1,12 +1,10 @@
 'use strict';
 
-const Homey = require('homey');
 const { ZwaveDevice } = require('homey-meshdriver');
 
 class ZW129 extends ZwaveDevice {
 
   onMeshInit() {
-    // TODO: add battery type (INTERNAL) to driver.compose
     this._batteryTrigger = this.getDriver().batteryTrigger;
     this._sceneTrigger = this.getDriver().sceneTrigger;
     this._dimTrigger = this.getDriver().dimTrigger;
@@ -24,9 +22,9 @@ class ZW129 extends ZwaveDevice {
     });
 
     this.registerReportListener('CENTRAL_SCENE', 'CENTRAL_SCENE_NOTIFICATION', report => {
-      if (report.hasOwnProperty('Properties1')
-                && report.Properties1.hasOwnProperty('Key Attributes')
-                && report.hasOwnProperty('Scene Number')) {
+      if (report.Properties1
+            && report.Properties1['Key Attributes']
+            && typeof (report['Scene Number']) !== 'undefined') {
         const data = {
           button: report['Scene Number'].toString(),
           scene: report.Properties1['Key Attributes'],
@@ -35,8 +33,8 @@ class ZW129 extends ZwaveDevice {
       }
     });
     this.registerReportListener('CONFIGURATION', 'CONFIGURATION_REPORT', report => {
-      if (report.hasOwnProperty('Parameter Number')
-                && report.hasOwnProperty('Configuration Value')) {
+      if (typeof (report['Parameter Number']) !== 'undefined'
+            && typeof (report['Configuration Value']) !== 'undefined') {
         if (report['Parameter Number'] === 9) {
           const data = {
             button: report['Configuration Value'][0].toString(),
@@ -66,7 +64,7 @@ class ZW129 extends ZwaveDevice {
       await this.configurationSet({
         index: 5,
         size: 4,
-      }, new Buffer([newSettings.rgb_r, newSettings.rgb_g, newSettings.rgb_b, 0]));
+      }, Buffer.from([newSettings.rgb_r, newSettings.rgb_g, newSettings.rgb_b, 0]));
     } else {
       const valueArray = newSettings.rgb_name.split(',');
       const multiplier = newSettings.rgb_name_level / 100 || 1;
@@ -74,30 +72,30 @@ class ZW129 extends ZwaveDevice {
       await this.configurationSet({
         index: 5,
         size: 4,
-      }, new Buffer([valueArray[0] * multiplier, valueArray[1] * multiplier, valueArray[2] * multiplier, 0]));
+      }, Buffer.from([valueArray[0] * multiplier,
+        valueArray[1] * multiplier,
+        valueArray[2] * multiplier,
+        0]));
     }
   }
 
-  sceneRunListener(args, state) {
-    if (!args) return Promise.reject('No arguments provided');
-    if (!state) return Promise.reject('No state provided');
+  async sceneRunListener(args, state) {
+    if (!args) throw new Error('No arguments provided');
+    if (!state) throw new Error('No state provided');
 
-    if (args.hasOwnProperty('button')
-            && state.hasOwnProperty('button')
-            && args.hasOwnProperty('scene')
-            && state.hasOwnProperty('scene')) {
+    if (args.button && state.button
+      && args.scene && state.scene) {
       return (args.button === state.button && args.scene === state.scene);
-    } return Promise.reject('Button or scene undefined in args or state');
+    } throw new Error('Button or scene undefined in args or state');
   }
 
-  dimRunListener(args, state) {
-    if (!args) return Promise.reject('No arguments provided');
-    if (!state) return Promise.reject('No state provided');
+  async dimRunListener(args, state) {
+    if (!args) throw new Error('No arguments provided');
+    if (!state) throw new Error('No state provided');
 
-    if (args.hasOwnProperty('button')
-            && state.hasOwnProperty('button')) {
+    if (args.button && state.button) {
       return (args.button === state.button);
-    } return Promise.reject('Button undefined in args or state');
+    } throw new Error('Button undefined in args or state');
   }
 
 }

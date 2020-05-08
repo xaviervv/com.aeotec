@@ -9,12 +9,13 @@ class AeotecGarageControllerDevice extends ZwaveDevice {
       get: 'BARRIER_OPERATOR_GET',
       report: 'BARRIER_OPERATOR_REPORT',
       reportParser: report => {
-        if (report && report.State) {
+        if (typeof (report['State']) !== 'undefined') {
           const result = report.State === 'Closed';
 
           if (this.getSetting('flipped')) return !result;
           return result;
         }
+        return null;
       },
       set: 'BARRIER_OPERATOR_SET',
       setParser: input => {
@@ -66,15 +67,12 @@ class AeotecGarageControllerDevice extends ZwaveDevice {
   async _setAlarmConfiguration(parameter, size, values) {
     this.log('Parameter:', parameter, 'Size:', size, 'Values:', values);
 
-    return await this.configurationSet({
+    if (values.length !== 4) return null;
+
+    return this.configurationSet({
       index: parameter,
       size,
-    }, new Buffer([
-      Number(values[0]),
-      Number(values[1]),
-      Number(values[2]),
-      Number(values[3]),
-    ]));
+    }, Buffer.from(values));
   }
 
 }

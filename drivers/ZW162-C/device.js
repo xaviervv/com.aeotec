@@ -1,6 +1,5 @@
 'use strict';
 
-const Homey = require('homey');
 const { ZwaveDevice } = require('homey-meshdriver');
 
 const SIREN_TIMEOUT = 10 * 1000;
@@ -28,8 +27,7 @@ class AeotecDoorbellSixDevice extends ZwaveDevice {
     });
 
     this.registerReportListener('NOTIFICATION', 'NOTIFICATION_REPORT', report => {
-      if (report.hasOwnProperty('Notification Type') && report.hasOwnProperty('Notification Status')) {
-        this.log('Notification report', report['Notification Status']);
+      if (report['Notification Type'] && report['Notification Status']) {
         if (report['Notification Type'] === 'Siren') {
           this.setCapabilityValue('onoff.siren', !!report['Notification Status (Raw)']);
 
@@ -54,14 +52,14 @@ class AeotecDoorbellSixDevice extends ZwaveDevice {
   async setSiren({ sirenNumber = 1, sirenState }) {
     this.currentSiren = sirenNumber;
     this.log('Turning siren', sirenNumber, sirenState);
-    return await this.node.MultiChannelNodes[`${sirenNumber}`].CommandClass.COMMAND_CLASS_BASIC.BASIC_SET({
+    return this.node.MultiChannelNodes[`${sirenNumber}`].CommandClass.COMMAND_CLASS_BASIC.BASIC_SET({
       Value: sirenState,
     });
   }
 
   async resetSiren() {
     this.setCapabilityValue('onoff.siren', false);
-    return await this.node.MultiChannelNodes[`${this.currentSiren}`].CommandClass.COMMAND_CLASS_BASIC.BASIC_SET({
+    return this.node.MultiChannelNodes[`${this.currentSiren}`].CommandClass.COMMAND_CLASS_BASIC.BASIC_SET({
       Value: false,
     });
   }
