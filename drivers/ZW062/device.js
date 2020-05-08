@@ -9,7 +9,7 @@ class AeotecGarageControllerDevice extends ZwaveDevice {
       get: 'BARRIER_OPERATOR_GET',
       report: 'BARRIER_OPERATOR_REPORT',
       reportParser: report => {
-        if (report && report.State) {
+        if (typeof (report['State']) !== 'undefined') {
           const result = report.State === 'Closed';
 
           if (this.getSetting('flipped')) return !result;

@@ -10,15 +10,15 @@ class AeotecWaterSensorDevice extends ZwaveDevice {
       set: 'BASIC_SET',
       report: 'BASIC_REPORT',
       reportParser: report => {
-        if (report['Value']) return report['Value'] !== 0;
-        if (report['Value (Raw)']) {
+        if (typeof (report['Value']) !== 'undefined') return report['Value'] !== 0;
+        if (typeof (report['Value (Raw)']) !== 'undefined') {
           return report['Value (Raw)'][0] !== 0;
         }
         return null;
       },
     });
     this.registerReportListener('SENSOR_BINARY', 'SENSOR_BINARY_REPORT', report => {
-      if (report['Sensor Value']) {
+      if (typeof report['Sensor Value'] !== 'undefined') {
         this.setCapabilityValue('alarm_water', report['Sensor Value'] === 'detected an event');
       }
     });

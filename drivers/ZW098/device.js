@@ -97,7 +97,7 @@ class AeotecLEDBulbDevice extends ZwaveDevice {
       } catch (err) {
         return Promise.resolve(false);
       }
-    } else return Promise.reject(new Error('invalid_device'));
+    } else throw new Error('invalid_device');
   }
 
   _createColourCommand(colourDisplayCycle,
@@ -135,7 +135,7 @@ class AeotecLEDBulbDevice extends ZwaveDevice {
     const numbers = number.split('');
 
     numbers.forEach(x => {
-      x = parseInt(x, 2);
+      x = parseInt(x, 10);
     });
 
     // Check if array has correct size

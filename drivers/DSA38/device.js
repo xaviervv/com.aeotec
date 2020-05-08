@@ -16,7 +16,7 @@ class AeotecPanicButtonDevice extends ZwaveDevice {
     this.registerCapability('measure_battery', 'BATTERY');
 
     this.registerReportListener('SCENE_ACTIVATION', 'SCENE_ACTIVATION_SET', report => {
-      if (report && report['Scene ID']) {
+      if (typeof (report['Scene ID']) !== 'undefined') {
         const trigger = sceneMap[report['Scene ID']];
         this[trigger].trigger(this, null, null);
       }

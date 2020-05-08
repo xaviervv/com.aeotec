@@ -91,26 +91,23 @@ class ZW130 extends ZwaveDevice {
     return null;
   }
 
-  sceneRunListener(args, state) {
-    if (!args) return Promise.reject(new Error('No arguments provided'));
-    if (!state) return Promise.reject(new Error('No state provided'));
+  async sceneRunListener(args, state) {
+    if (!args) throw new Error('No arguments provided');
+    if (!state) throw new Error('No state provided');
 
-    if (args['button']
-      && state['button']
-      && args['scene']
-      && state['scene']) {
+    if (args.button && state.button
+      && args.scene && state.scene) {
       return (args.button === state.button && args.scene === state.scene);
-    } return Promise.reject(new Error('Button or scene undefined in args or state'));
+    } throw new Error('Button or scene undefined in args or state');
   }
 
-  dimRunListener(args, state) {
-    if (!args) return Promise.reject(new Error('No arguments provided'));
-    if (!state) return Promise.reject(new Error('No state provided'));
+  async dimRunListener(args, state) {
+    if (!args) throw new Error('No arguments provided');
+    if (!state) throw new Error('No state provided');
 
-    if (args['button']
-      && state['button']) {
+    if (args.button && state.button) {
       return (args.button === state.button);
-    } return Promise.reject(new Error('Button undefined in args or state'));
+    } throw new Error('Button undefined in args or state');
   }
 
 }

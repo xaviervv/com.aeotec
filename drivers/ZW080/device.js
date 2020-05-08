@@ -20,7 +20,7 @@ class AeotecSirenDevice extends ZwaveDevice {
       return this.node.CommandClass.COMMAND_CLASS_SWITCH_BINARY.SWITCH_BINARY_SET({
         'Switch Value': value,
       });
-    } return Promise.reject(new Error('invalid_device_command_class'));
+    } throw new Error('invalid_device_command_class');
   }
 
   async changeSoundRunListener(args, state) {
@@ -51,7 +51,7 @@ class AeotecSirenDevice extends ZwaveDevice {
 
       return Promise.resolve(true);
     }
-    return Promise.reject(new Error('invalid_arguments'));
+    throw new Error('invalid_arguments');
   }
 
 }
