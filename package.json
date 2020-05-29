@@ -1,7 +1,7 @@
 {
-  "name": "com.aeotec",
+  "name": "xavier.aeotec",
   "version": "1.0.0",
-  "description": "This app adds support for Aeotec devices in Homey.",
+  "description": "This app is a copy of the existing app, but with merged PRs.",
   "main": "app.js",
   "dependencies": {
     "homey-log": "^1.0.6",
