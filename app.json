@@ -8434,7 +8434,9 @@
       "class": "socket",
       "capabilities": [
         "measure_power",
+        "measure_voltage",
         "meter_power",
+        "measure_current",
         "onoff"
       ],
       "images": {
@@ -8444,19 +8446,23 @@
       "zwave": {
         "manufacturerId": 881,
         "productTypeId": [
-          3,
-          259,
-          515,
-          771
+          3
         ],
         "productId": [
           175
         ],
-        "zwaveAllianceProductId": 6544,
-        "zwaveAllianceProductDocumentation": "https://products.z-wavealliance.org/ProductManual/File?folder=&filename=MarketCertificationFiles/3437/Smart%20Switch%207%20product%20manual.pdf - Smart Switch 7 product manual.pdf",
+        "zwaveAllianceProductId": 3437,
+        "zwaveAllianceProductDocumentation": "https://products.z-wavealliance.org/ProductManual/File?folder=&filename=MarketCertificationFiles/3437/Smart%20Switch%207%20product%20manual.pdf",
         "learnmode": {
           "instruction": {
-            "en": "Press the (action) button 2x times in 1 second on the Smart Switch 7 to enter learn mode"
+            "en": "Press 2 times within 3 second on the switch (LED).",
+            "nl": "Druk 2 keer binnen 3 seconden op het knopje."
+          }
+        },
+        "unlearnmode": {
+          "instruction": {
+            "en": "Press 2 times within 1 second on the switch (LED).",
+            "nl": "Druk 2 keer binnen 1 seconden op het knopje."
           }
         },
         "associationGroups": [
@@ -8465,12 +8471,7 @@
         "associationGroupsOptions": {
           "1": {
             "hint": {
-              "en": "Z-Wave Plus Lifeline.\r\nThe Hial CC and Basic Report CC (configured by parameter 80) can be sent to the associatd nodes in this group. Typically the main Z-Wave controller Node ID 01 should be associated to this association."
-            }
-          },
-          "2": {
-            "hint": {
-              "en": "Retransmit received command to other Z-Wave devices by sending duplicated message to other associated Z-Wave devices."
+              "en": "Z-Wave Plus Lifeline.\r\nThe Hial CC and Basic Report CC (configured by parameter 80) can be sent to the associatd nodes in this group."
             }
           }
         },
@@ -8492,18 +8493,18 @@
           },
           {
             "id": 10,
-            "size": 2,
+            "size": 1,
             "value": 0
           },
           {
             "id": 18,
-            "size": 1,
+            "size": 2,
             "value": 2
           },
           {
             "id": 20,
             "size": 1,
-            "value": 2
+            "value": 0
           },
           {
             "id": 80,
@@ -8528,7 +8529,7 @@
           {
             "id": 92,
             "size": 2,
-            "value": 0
+            "value": 100
           },
           {
             "id": 93,
@@ -8538,12 +8539,17 @@
           {
             "id": 101,
             "size": 4,
-            "value": 3
+            "value": 0
           },
           {
             "id": 111,
             "size": 4,
             "value": 600
+          },
+          {
+            "id": 255,
+            "size": 4,
+            "value": 0
           }
         ]
       },
@@ -8552,30 +8558,33 @@
           "id": "4",
           "type": "number",
           "label": {
-            "en": "Current overload protection"
+            "en": "Current overload protection",
+            "nl": "Bescherming tegen overbelasting"
           },
           "hint": {
-            "en": "This parameter (91) determines whether or not the Smart Switch 7 protects plugged-in devices from overcurrent based on the value set."
+            "en": "If power exceeds the value set in this parameter for over 1 minute, Smart Switch 7 will report and overload report and turn off Smart Switch 7.",
+            "nl": "Als het vermogen langer dan 1 minuut de ingestelde waarde in deze parameter overschrijdt, rapporteert de Smart Switch 7 dat en wordt de Smart Switch 7 uitgeschakeld."
           },
           "zwave": {
-            "index": 91,
-            "size": 2,
-            "signed": false
+            "index": 4,
+            "size": 2
           },
           "attr": {
             "min": 0,
-            "max": 2145
+            "max": 2415
           },
-          "value": 2145
+          "value": 2415
         },
         {
           "id": "8",
           "type": "dropdown",
           "label": {
-            "en": "Alarm Response"
+            "en": "Switch reaction to alarm",
+            "nl": "Schakelaar reactie op alarm"
           },
           "hint": {
-            "en": "This parameter (8) determines how the Switch should respond when an alarm is received."
+            "en": "This parameter (8) Set the response of the Smart Switch 7 in response to an operation performed when an alarm is received.",
+            "nl": "Deze parameter (8) Stel de reactie van de Smart Switch 7 in als reactie op een bewerking die wordt uitgevoerd wanneer een alarm wordt ontvangen."
           },
           "zwave": {
             "index": 8,
@@ -8586,25 +8595,29 @@
             {
               "id": "0",
               "label": {
-                "en": "Disable, no reaction."
+                "en": "No action.",
+                "nl": "Geen actie"
               }
             },
             {
               "id": "1",
               "label": {
-                "en": "Switch turns ON"
+                "en": "Turn switch off",
+                "nl": "Schakel uit"
               }
             },
             {
               "id": "2",
               "label": {
-                "en": "Switch turns OFF"
+                "en": "Turn switch on",
+                "nl": "Schakel aan"
               }
             },
             {
               "id": "3",
               "label": {
-                "en": "Switch turns on for 5 seconds, then turns off for 5 seconds. This is repeated until user disables alarm manually by triple tapping SS7s' button."
+                "en": "Turn the switch on for 5 seconds, then off for 5 seconds until the alarm is disabled.",
+                "nl": "Schakel uit voor 5 sec., en schakel daarna weer aan voor 5 sec tot alarm wordt uitgezet"
               }
             }
           ]
@@ -8613,15 +8626,16 @@
           "id": "9",
           "type": "number",
           "label": {
-            "en": "Alarm Settings"
+            "en": "Alarm reaction when receive",
+            "nl": "Alarm reactie"
           },
           "hint": {
-            "en": "This parameter (9) determines what the Switch responds to what alarms in your Z-Wave System (Z-Wave smoke detectors, motion sensors, etc). 1 - access control trigger state, 256 - Smoke Alarm, 512 - CO Alarm, 2048 - CO2 Alarm, 4096 - Water Alarm, 8192 - Access Control, 16384 - Home Security"
+            "en": "Configure what alarms Smart Switch 7 will react to from other Z-Wave devices.\n\nValue 0 and 1 cannot be used at the same time, choose one as a part of your calculation.\n\nUse the sum of values to determine what alarms trigger your Smart Switch 7.\n\nFor example:\nValue = 0 + 256 + 512 + 1024 = 1792\n0 = sets the control scheme to turn on Smart Switch 7 when open alarm state happens\n256 = allows Smoke Alarm signals to control SS7\n512 = allows CO Alarm signals to control SS7\n1024 = allows CO2 Alarm signals to control SS7",
+            "nl": "Configureer op welke alarmen Smart Switch 7 zal reageren van andere Z-Wave-apparaten\n\n\nWaarde 0 en 1 kunnen niet tegelijkertijd worden gebruikt, kies er een als onderdeel van uw berekening.\n\nGebruik de som van waarden om te bepalen welke alarmen uw Smart Switch 7 activeren.\n\nVoorbeeld:\nWaarde = 0 + 256 + 512 + 1024 = 1792\n0 = stelt het regelschema in om Smart Switch 7 in te schakelen wanneer een open alarmstatus optreedt\n256 = staat rookalarmsignalen toe om SS7 te regelen\n512 = staat CO-alarmsignalen toe om SS7 te regelen\n1024 = staat CO2-alarmsignalen toe om controle SS7"
           },
           "zwave": {
             "index": 9,
-            "size": 2,
-            "signed": false
+            "size": 2
           },
           "attr": {
             "min": 0,
@@ -8633,14 +8647,16 @@
           "id": "10",
           "type": "number",
           "label": {
-            "en": "Setting to disable Alarm"
+            "en": "Release/Disable alarm",
+            "nl": "Alarm uitschakelen"
           },
           "hint": {
-            "en": "This parameter (10) how you are able to disable your alarm. Value 0 will allow you to disable using 3x button press, Value 1 will allow you to disable whenn a idle response is received, values 10 - 255 will set the duration of the alarm state in seconds."
+            "en": "Sets how you are able to disable the Smart Switch 7 alarm state.\n\n0 = Tap 3 times to disable the alarm state.\n1 = Notification idle events.\n10 - 255 = Sets time in minutes on how long the alarm state should be held.",
+            "nl": "Hiermee stel in hoe u de alarmstatus van de Smart Switch 7 kunt uitschakelen. \n\n0 = Tik 3 keer om de alarmstatus uit te schakelen. \n1 = Meldingen inactieve gebeurtenissen. \n10 - 255 = Stelt de tijd in minuten in hoe lang de alarmstatus moet worden vastgehouden."
           },
           "zwave": {
             "index": 10,
-            "size": 2,
+            "size": 1,
             "signed": false
           },
           "attr": {
@@ -8653,18 +8669,20 @@
           "id": "18",
           "type": "number",
           "label": {
-            "en": "Minimum wattage change needed before an update report is send"
+            "en": "Flash frequency",
+            "nl": "Flash frequency"
           },
           "hint": {
-            "en": "This parameter (18) determines the LED blinking frequency per second when alarm is enabled."
+            "en": "This parameter (18) configures the LED flash frequency and amount of time.",
+            "nl": "Deze parameter (18) configureert de LED-flitsfrequentie en de hoeveelheid tijd."
           },
           "zwave": {
             "index": 18,
-            "size": 1,
+            "size": 2,
             "signed": false
           },
           "attr": {
-            "min": 0,
+            "min": 1,
             "max": 9
           },
           "value": 2
@@ -8673,10 +8691,12 @@
           "id": "19",
           "type": "number",
           "label": {
-            "en": "Minimum wattage change (%) needed before an update report is send"
+            "en": "Start/Stop LED flash (Write Only)",
+            "nl": "Start/Stop LED flash (Alleen schrijven)"
           },
           "hint": {
-            "en": "This parameter (19) is a SET only command, setting this parameter will cause the LED to blink in for X amount of seconds before it stops on its own."
+            "en": "This parameter (19) sets the timeframe of flashing in seconds",
+            "nl": "Deze parameter (19) stelt het tijdsbestek van het knipperen in seconden in"
           },
           "zwave": {
             "index": 19,
@@ -8684,18 +8704,21 @@
           },
           "attr": {
             "min": 0,
-            "max": 255
+            "max": 255,
+            "signed": false
           },
-          "value": 5
+          "value": 0
         },
         {
           "id": "20",
           "type": "dropdown",
           "label": {
-            "en": "Action in the case of a power outage."
+            "en": "Configure the output load status after re-power",
+            "nl": "Zet na een stroomonderbreking deze Smart Switch"
           },
           "hint": {
-            "en": "This parameter (20) determines the state of the Switch after power comes back."
+            "en": "This parameter (20) determines the device behaviour after power loss.",
+            "nl": "Deze parameter (20) bepaalt het gedrag van het appraat na stroomuitval."
           },
           "zwave": {
             "index": 20,
@@ -8706,19 +8729,22 @@
             {
               "id": "0",
               "label": {
-                "en": "Last State"
+                "en": "Status before re-power",
+                "nl": "Status voor stroomonderbreking"
               }
             },
             {
               "id": "1",
               "label": {
-                "en": "Switch turns ON."
+                "en": "Always on",
+                "nl": "Altijd aan"
               }
             },
             {
               "id": "2",
               "label": {
-                "en": "Switch turns OFF."
+                "en": "Always off",
+                "nl": "Altijd uit"
               }
             }
           ]
@@ -8727,10 +8753,12 @@
           "id": "80",
           "type": "dropdown",
           "label": {
-            "en": "Instant Status Update."
+            "en": "Status Update",
+            "nl": "Status Update"
           },
           "hint": {
-            "en": "This parameter (80) allows the Switch to report a status update when controlled by other devices or by its own physical button."
+            "en": "Keeps the status of Smart Switch 7 in sync with your Z-Wave gateway. Determine which reports are sent to your gateway upon a state change (ie. If switch turns ON, then the switch will forward state update to Z-Wave gateway).",
+            "nl": "Houdt de status van Smart Switch 7 synchroon met uw Z-Wave gateway. Bepaal welke rapporten naar uw gateway worden verzonden bij een statusverandering (d.w.z. Als de schakelaar wordt ingeschakeld, stuurt de schakelaar de statusupdate door naar de Z-Wave gateway)."
           },
           "zwave": {
             "index": 80,
@@ -8741,19 +8769,22 @@
             {
               "id": "0",
               "label": {
-                "en": "Nothing"
+                "en": "No report sent",
+                "nl": "Geen"
               }
             },
             {
               "id": "1",
               "label": {
-                "en": "Basic Report."
+                "en": "Report Basic Report",
+                "nl": "Basic Report"
               }
             },
             {
               "id": "2",
               "label": {
-                "en": "Binary Switch."
+                "en": "Report Binary Switch",
+                "nl": "Binary Switch"
               }
             }
           ]
@@ -8762,10 +8793,12 @@
           "id": "81",
           "type": "dropdown",
           "label": {
-            "en": "LED Indicator Mode."
+            "en": "LED indicator mode",
+            "nl": "LED indicatie modus"
           },
           "hint": {
-            "en": "This parameter (81) determines how the LED on Switch should react."
+            "en": "This parameter (81) allows you to configure how the LED indicator works. ",
+            "nl": "Deze parameter (81) stelt je in staat om de LED indicator in te stellen."
           },
           "zwave": {
             "index": 81,
@@ -8776,136 +8809,196 @@
             {
               "id": "0",
               "label": {
-                "en": "LED Disabled."
+                "en": "LED Disabled",
+                "nl": "LED uit"
               }
             },
             {
               "id": "1",
               "label": {
-                "en": "Night Light Mode."
+                "en": "Night Light Mode",
+                "nl": "Nacht modus"
               }
             },
             {
               "id": "2",
               "label": {
-                "en": "On/Off LED follow."
+                "en": "On/Off Mode",
+                "nl": "Aan/uit status"
               }
             }
           ]
         },
         {
           "id": "82",
-          "type": "number",
+          "type": "text",
           "label": {
-            "en": "If Night Light mode is set on Parameter 81, you can configure the time setting of when the LED turns on and off. Default settings will turn the light on at 6pm, and turn off light at 8am."
+            "en": "Night Light Mode",
+            "nl": "Nacht licht modus"
           },
           "hint": {
-            "en": "This parameter (82) is a SET only command, setting this parameter will cause the LED to blink in for X amount of seconds before it stops on its own."
+            "en": "This parameter (82) enable or disable Night Light Mode during specific times.",
+            "nl": "Deze parameter (82) zet de nacht licht modus aan of uit op specifieke tijden."
           },
           "zwave": {
             "index": 82,
             "size": 4
           },
-          "attr": {
-            "min": 0,
-            "max": 389748539
-          },
-          "value": 301991936
+          "value": "0x12000800"
         },
         {
-          "id": "91",
-          "type": "number",
+          "type": "group",
           "label": {
-            "en": "Threshold Power (W)."
+            "en": "Usage reports",
+            "nl": "Verbruik rapportages"
           },
-          "hint": {
-            "en": "This parameter (91) determines the threshold value that is required of Watt to change before it can report."
-          },
-          "zwave": {
-            "index": 91,
-            "size": 2
-          },
-          "attr": {
-            "min": 0,
-            "max": 2300
-          },
-          "value": 5
+          "children": [
+            {
+              "id": "91",
+              "type": "number",
+              "label": {
+                "en": "Watt threshold",
+                "nl": "Wattage drempel"
+              },
+              "hint": {
+                "en": "If Watt passes the threshold setting by + or -, a Watt report will be sent to update its value.",
+                "nl": "Als het aantal wattage de ingestelde drempel overschrijdt, + of - dan wordt dit verstuurd naar de Homey."
+              },
+              "zwave": {
+                "index": 91,
+                "size": 2
+              },
+              "attr": {
+                "min": 0,
+                "max": 2300
+              },
+              "value": 0
+            },
+            {
+              "id": "92",
+              "type": "number",
+              "label": {
+                "en": "kWh threshold",
+                "nl": "kWh drempel"
+              },
+              "hint": {
+                "en": "If kWh passes the threshold setting by + or -, a kWh report will be sent to update its value.",
+                "nl": "Als het aantal kWh de ingestelde drempel overschrijdt, + of - dan wordt dit verstuurd naar de Homey."
+              },
+              "zwave": {
+                "index": 92,
+                "size": 2
+              },
+              "attr": {
+                "min": 0,
+                "max": 10000
+              },
+              "value": 100
+            },
+            {
+              "id": "93",
+              "type": "number",
+              "label": {
+                "en": "Current threshold",
+                "nl": "Ampère drempel"
+              },
+              "hint": {
+                "en": "If current passes the threshold setting by + or -, a current report will be sent to update its value.",
+                "nl": "Als het aantal ampère de ingestelde drempel overschrijdt, + of - dan wordt dit verstuurd naar de Homey."
+              },
+              "zwave": {
+                "index": 92,
+                "size": 2
+              },
+              "attr": {
+                "min": 0,
+                "max": 10000
+              },
+              "value": 100
+            },
+            {
+              "id": "101",
+              "type": "number",
+              "label": {
+                "en": "Timed report enable/disable",
+                "nl": "Tijd raport ingeschakeld/uitgeschakeld"
+              },
+              "hint": {
+                "en": "This parameter (101) sets what sensors should be reported at a timed interval. This can be used at the same time as threshold reporting to allow both thresholds and timed reports to be used.",
+                "nl": "Deze parameter (101) stelt in welke sensoren met een tijdsinterval moeten worden gerapporteerd. Dit kan tegelijkertijd met drempelrapportage worden gebruikt om zowel drempels als getimede rapporten te kunnen gebruiken."
+              },
+              "zwave": {
+                "index": 101,
+                "size": 4
+              },
+              "attr": {
+                "min": 0,
+                "max": 15
+              },
+              "value": 0
+            },
+            {
+              "id": "111",
+              "type": "number",
+              "label": {
+                "en": "Timed report interval",
+                "nl": "Tijd raport interval"
+              },
+              "hint": {
+                "en": "Reports the sensors set on Parameter 101.",
+                "nl": "Tijd report van de sensoren ingesteld in Parameter 101."
+              },
+              "zwave": {
+                "index": 111,
+                "size": 4
+              },
+              "attr": {
+                "min": 30,
+                "max": 2592000
+              },
+              "value": 600
+            }
+          ]
         },
         {
-          "id": "92",
-          "type": "number",
+          "id": "255",
+          "type": "radio",
           "label": {
-            "en": "Threshold Consumption (kWh)."
+            "en": "Factory reset",
+            "nl": "Terug naar fabrieks instellingen"
           },
           "hint": {
-            "en": "This parameter (92) determines the threshold value that is required of kWh to change before it can report."
+            "en": "This value can only be configured to reset default values of Smart Switch 7 parameter settings. This can also be used to factory reset and remove it from your Z-Wave network.",
+            "nl": "Deze waarde kan alleen worden geconfigureerd om de standaardwaarden van Smart Switch 7-parameterinstellingen te resetten. Dit kan ook worden gebruikt om de fabrieksinstellingen te herstellen en uit uw Z-Wave-netwerk te verwijderen."
           },
           "zwave": {
-            "index": 92,
-            "size": 2
-          },
-          "attr": {
-            "min": 0,
-            "max": 10000
-          },
-          "value": 0
-        },
-        {
-          "id": "93",
-          "type": "number",
-          "label": {
-            "en": "Threshold Current (A)."
-          },
-          "hint": {
-            "en": "This parameter (93) determines the threshold value that is required of A to change before it can report. The setting is set in value*0.1 scale."
-          },
-          "zwave": {
-            "index": 93,
-            "size": 1
-          },
-          "attr": {
-            "min": 0,
-            "max": 100
-          },
-          "value": 0
-        },
-        {
-          "id": "101",
-          "type": "number",
-          "label": {
-            "en": "Sensors reported at a timed interval."
-          },
-          "hint": {
-            "en": "This parameter (101) allows you to set the sensors that are reported at a timed interval. Value 1 = kWh, Value 2 = W, Value 4 = V, Value 8 = A."
-          },
-          "zwave": {
-            "index": 101,
+            "index": 255,
             "size": 4
           },
-          "attr": {
-            "min": 0,
-            "max": 15
-          },
-          "value": 15
-        },
-        {
-          "id": "111",
-          "type": "number",
-          "label": {
-            "en": "Sensor interval report setting."
-          },
-          "hint": {
-            "en": "This parameter (101) allows you to set the interval at which the sensors set on Parameter 101 to be reported every X amount of seconds."
-          },
-          "zwave": {
-            "index": 101,
-            "size": 4
-          },
-          "attr": {
-            "min": 0,
-            "max": 2592000
-          },
-          "value": 600
+          "value": "0",
+          "values": [
+            {
+              "id": "0",
+              "label": {
+                "en": "Do nothing",
+                "nl": "Doe niks"
+              }
+            },
+            {
+              "id": "2592000",
+              "label": {
+                "en": "Reset Parameter Settings to default settings",
+                "nl": "Reset Parameter instellingen naar standaardwaarden"
+              }
+            },
+            {
+              "id": "1431655765",
+              "label": {
+                "en": "Completely factory reset and remove from network",
+                "nl": "Terug naar fabrieks instellingen en verwijder van netwerk"
+              }
+            }
+          ]
         }
       ]
     },
