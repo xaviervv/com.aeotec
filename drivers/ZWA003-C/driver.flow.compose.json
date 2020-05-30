@@ -1,0 +1,70 @@
+{
+  "triggers": [
+    {
+      "id": "zwa003-c_press_1",
+      "title": {
+        "en": "Press 1 top short pressed",
+        "nl": "Press 1 kort ingedrukt"
+      },
+      "args": []
+    },
+    {
+      "id": "zwa003-c_hold_1",
+      "title": {
+        "en": "Press 1 top long pressed",
+        "nl": "Press 1 lang ingedrukt"
+      },
+      "args": []
+    },
+    {
+      "id": "zwa003-c_press_2",
+      "title": {
+        "en": "Press 2 short pressed",
+        "nl": "Press 2 kort ingedrukt"
+      },
+      "args": []
+    },
+    {
+      "id": "zwa003-c_hold_2",
+      "title": {
+        "en": "Press 2 long pressed",
+        "nl": "Press 2 lang ingedrukt"
+      },
+      "args": []
+    },
+    {
+      "id": "zwa003-c_press_3",
+      "title": {
+        "en": "Press 3 short pressed",
+        "nl": "Press 3 kort ingedrukt"
+      },
+      "args": []
+    },
+    {
+      "id": "zwa003-c_hold_3",
+      "title": {
+        "en": "Press 3 long pressed",
+        "nl": "Press 3 lang ingedrukt"
+      },
+      "args": []
+    },
+    {
+      "id": "zwa003-c_press_4",
+      "title": {
+        "en": "Press 4 short pressed",
+        "nl": "Press 4 kort ingedrukt"
+      },
+      "args": []
+    },
+    {
+      "id": "zwa003-c_hold_4",
+      "title": {
+        "en": "Press 4 long pressed",
+        "nl": "Press 4 lang ingedrukt"
+      },
+      "args": []
+    }
+  ],
+  "conditions": [],
+  "actions": []
+}
